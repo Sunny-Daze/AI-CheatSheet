@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Body from "./components/Body"
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 
 function App() {
   const [mode, setmode] = useState("light");
@@ -19,7 +20,8 @@ function App() {
   return (
     <>
       <Header mode={mode} toggle={toggle} />
-      <Body />
+      <Body mode={mode} />
+      <Footer mode={mode} />
     </>
   );
 }

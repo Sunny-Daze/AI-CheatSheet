@@ -1,7 +1,7 @@
 import React from "react";
 import "./Panel.css";
 
-function Panel1(props) {
+function Panel5(props) {
   return (
     <>
       <div
@@ -22,10 +22,10 @@ function Panel1(props) {
             }`,
           }}
         >
-          Program 1
+          Program 5
         </div>
         <div className="card-body">
-          <h5 className="card-title">BFS and DFS</h5>
+          <h5 className="card-title">8 Queens Prob</h5>
           <p className="card-text"></p>
         </div>
       </div>
@@ -53,7 +53,7 @@ function Panel1(props) {
               </h5>
               <button
                 type="button"
-                className="btn-close  btn-close-white"
+                className="btn-close btn-close-white"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -94,4 +94,4 @@ function Panel1(props) {
   );
 }
 
-export default Panel1;
+export default Panel5;

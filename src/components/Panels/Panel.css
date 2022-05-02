@@ -1,0 +1,24 @@
+.panel1 {
+    cursor: pointer;
+  transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+    height: 200px;
+    width: 300px;
+}
+
+.panel1:hover {
+    transform: scale(1.1);
+}
+
+.card-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.panel6-title{
+  width: 200px;
+  text-align: center;
+}

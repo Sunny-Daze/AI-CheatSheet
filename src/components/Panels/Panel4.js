@@ -22,10 +22,10 @@ function Panel1(props) {
             }`,
           }}
         >
-          Program 1
+          Program 4
         </div>
         <div className="card-body">
-          <h5 className="card-title">BFS and DFS</h5>
+          <h5 className="card-title">Truth Tables</h5>
           <p className="card-text"></p>
         </div>
       </div>
@@ -53,7 +53,7 @@ function Panel1(props) {
               </h5>
               <button
                 type="button"
-                className="btn-close  btn-close-white"
+                className="btn-close btn-close-white"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
