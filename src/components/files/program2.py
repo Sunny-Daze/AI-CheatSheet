@@ -1,116 +1,364 @@
-class Node:
-  def __init__(self,data,level,fval):
-    """ Initialize the node with the data, level of the node and the calculated fvalue """
-    self.data = data
-    self.level = level
-    self.fval = fval
+################################################### Misplaced Tilessssss #############################################
+def print_in_format(matrix):
+    for i in range(9):
+        if i % 3 == 0 and i > 0:
+            print("")
+        print(str(matrix[i]) + " ", end="")
 
-  def generate_child(self):
-    """ Generate child nodes from the given node by moving the blank space
-      either in the four directions {up,down,left,right} """
-    x,y = self.find(self.data,'_')
-    """ val_list contains position values for moving the blank space in either of
-      the 4 directions [up,down,left,right] respectively. """
-    val_list = [[x,y-1],[x,y+1],[x-1,y],[x+1,y]]
-    children = []
-    for i in val_list:
-      child = self.shuffle(self.data,x,y,i[0],i[1])
-      if child is not None:
-        child_node = Node(child,self.level+1,0)
-        children.append(child_node)
-    return children
-    
-  def shuffle(self,puz,x1,y1,x2,y2):
-    """ Move the blank space in the given direction and if the position value are out
-      of limits the return None """
-    if x2 >= 0 and x2 < len(self.data) and y2 >= 0 and y2 < len(self.data):
-      temp_puz = []
-      temp_puz = self.copy(puz)
-      temp = temp_puz[x2][y2]
-      temp_puz[x2][y2] = temp_puz[x1][y1]
-      temp_puz[x1][y1] = temp
-      return temp_puz
-    else:
-      return None
-      
 
-  def copy(self,root):
-    """ Copy function to create a similar matrix of the given node"""
-    temp = []
-    for i in root:
-      t = []
-      for j in i:
-        t.append(j)
-      temp.append(t)
-    return temp  
-      
-  def find(self,puz,x):
-    """ Specifically used to find the position of the blank space """
-    for i in range(0,len(self.data)):
-      for j in range(0,len(self.data)):
-        if puz[i][j] == x:
-          return i,j
+def count(s):
+    c = 0
+    ideal = [1, 2, 3,
+             4, 5, 6,
+             7, 8, 0]
 
-class Puzzle:
-  def __init__(self,size):
-    """ Initialize the puzzle size by the specified size,open and closed lists to empty """
-    self.n = size
-    self.open = []
-    self.closed = []
+    for i in range(9):
+        if s[i] != 0 and s[i] != ideal[i]:
+            c += 1
+    return c
 
-  def accept(self):
-    """ Accepts the puzzle from the user """
-    puz = []
-    for i in range(0,self.n):
-      temp = input().split(" ")
-      puz.append(temp)
-    return puz
+def move(ar, p, st):
 
-  def f(self,start,goal):
-    """ Heuristic Function to calculate hueristic value f(x) = h(x) + g(x) """
-    return self.h(start.data,goal)+start.level
+    rh = 999999
+    store_st = st.copy()
 
-  def h(self,start,goal):
-    """ Calculates the different between the given puzzles """
-    temp = 0
-    for i in range(0,self.n):
-      for j in range(0,self.n):
-        if start[i][j] != goal[i][j] and start[i][j] != '_':
-          temp += 1
-    return temp
-    
+    for i in range(len(ar)):
+        dupl_st = st.copy()
+        temp = dupl_st[p]
+        dupl_st[p] = dupl_st[arr[i]]
+        dupl_st[arr[i]] = temp
+        tmp_rh = count(dupl_st)
 
-  def process(self):
-    """ Accept Start and Goal Puzzle state"""
-    print("Enter the start state matrix \n")
-    start = self.accept()
-    print("Enter the goal state matrix \n")    
-    goal = self.accept()
+        if tmp_rh < rh:
+            rh = tmp_rh
+            store_st = dupl_st.copy()
 
-    start = Node(start,0,0)
-    start.fval = self.f(start,goal)
-    """ Put the start node in the open list"""
-    self.open.append(start)
-    print("\n\n")
-    while True:
-      cur = self.open[0]
-      print("")
-      print("\\next step:\n")
-      for i in cur.data:
-        for j in i:
-          print(j,end=" ")
-        print("")
-      """ If the difference between current and goal node is 0 we have reached the goal node"""
-      if(self.h(cur.data,goal) == 0):
-        break
-      for i in cur.generate_child():
-        i.fval = self.f(i,goal)
-        self.open.append(i)
-      self.closed.append(cur)
-      del self.open[0]
+    return store_st, rh
 
-      """ sort the open list based on f value """
-      self.open.sort(key = lambda x:x.fval,reverse=False)
+state = [1, 2, 3,
+         5, 6, 0,
+         4, 7, 8]
 
-puz = Puzzle(3)
-puz.process()
+h = count(state)
+
+Level = 1
+
+print("\n----------- LEVEL " + str(Level) + " -----------")
+print_in_format(state)
+print("\nHeuristic Value (Misplaced) : " + str(h))
+
+while h > 0:
+
+    pos = int(state.index(0))
+    Level += 1
+
+    if pos == 0:
+        arr = [1, 3]
+        state, h = move(arr, pos, state)
+
+    elif pos == 1:
+        arr = [0, 2, 4]
+        state, h = move(arr, pos, state)
+
+    elif pos == 2:
+        arr = [1, 5]
+        state, h = move(arr, pos, state)
+
+    elif pos == 3:
+        arr = [0, 4, 6]
+        state, h = move(arr, pos, state)
+
+    elif pos == 4:
+        arr = [1, 3, 5, 7]
+        state, h = move(arr, pos, state)
+
+    elif pos == 5:
+        arr = [2, 4, 8]
+        state, h = move(arr, pos, state)
+
+    elif pos == 6:
+        arr = [3, 7]
+        state, h = move(arr, pos, state)
+
+    elif pos == 7:
+        arr = [4, 6, 8]
+        state, h = move(arr, pos, state)
+
+    elif pos == 8:
+        arr = [5, 6]
+        state, h = move(arr, pos, state)
+
+    print("\n----------- LEVEL " + str(Level) + " -----------")
+    print_in_format(state)
+    print("\nHeuristic Value(Misplaced) : " + str(h))
+
+###################################################End of Misplaced Tiles ###############################################
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################### Manhatten Distanceee #############################################
+
+def print_in_format(matrix):
+
+    for i in range(9):
+
+        if i % 3 == 0 and i > 0:
+
+            print("")
+
+        print(str(matrix[i]) + " ", end="")
+
+
+
+
+
+def convert(s):
+
+    mat = []
+
+    a = []
+
+    b = []
+
+    c = []
+
+    for i in range(9):
+
+        if i < 3:
+
+            a.append(s[i])
+
+        if i >= 3 and i <= 5:
+
+            b.append(s[i])
+
+        if i > 5:
+
+            c.append(s[i])
+
+
+
+    mat.append(a)
+
+    mat.append(b)
+
+    mat.append(c)
+
+    return mat
+
+
+
+
+
+def ideal_distFind(val):
+
+    x1 = 999
+
+    y1 = 999
+
+    ideal = [[1, 2, 3],
+
+             [4, 5, 6],
+
+             [7, 8, 0]]
+
+
+
+    for i in range(3):
+
+        for j in range(3):
+
+            if ideal[i][j] == val:
+
+                x1 = i
+
+                y1 = j
+
+                break
+
+    return x1, y1
+
+
+
+
+
+def count(initial_state):
+
+    inits = initial_state.copy()
+
+    inicon = convert(inits)
+
+    x1 = y1 = x2 = y2 = 999
+
+    total_h = 0;
+
+
+
+    for i in range(3):
+
+        for j in range(3):
+
+            x1, y1 = ideal_distFind(inicon[i][j])
+
+            x2, y2 = i, j
+
+            total_h += abs(x1 - x2) + abs(y1 - y2)
+
+
+
+    return total_h
+
+
+
+
+
+def move(ar, p, st):
+
+    rh = 9999
+
+    store_st = st.copy()
+
+
+
+    for i in range(len(ar)):
+
+
+
+        dupl_st = st.copy()
+
+
+
+        tmp = dupl_st[p]
+
+        dupl_st[p] = dupl_st[arr[i]]
+
+        dupl_st[arr[i]] = tmp
+
+
+
+        trh = count(dupl_st)
+
+
+
+        if trh < rh:
+
+            rh = trh
+
+            store_st = dupl_st.copy()
+
+
+
+    # print(rh, store_st)
+
+
+
+    return store_st, rh
+
+
+
+
+
+state = [1, 2, 3,
+
+         5, 6, 0,
+
+         4, 7, 8]
+
+
+
+h = count(state)
+
+Level = 1
+
+
+
+print("\n------ Level " + str(Level) + " ------")
+
+print_in_format(state)
+
+print("\nHeuristic Value(Manhattan Distance) : " + str(h))
+
+
+
+while h > 0:
+
+    pos = int(state.index(0))
+
+
+
+    Level += 1
+
+
+
+    if pos == 0:
+
+        arr = [1, 3]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 1:
+
+        arr = [0, 2, 4]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 2:
+
+        arr = [1, 5]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 3:
+
+        arr = [0, 4, 6]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 4:
+
+        arr = [1, 3, 5, 7]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 5:
+
+        arr = [2, 4, 8]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 6:
+
+        arr = [3, 7]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 7:
+
+        arr = [4, 6, 8]
+
+        state, h = move(arr, pos, state)
+
+    elif pos == 8:
+
+        arr = [5, 6]
+
+        state, h = move(arr, pos, state)
+
+
+
+    print("\n------ Level " + str(Level) + " ------")
+
+    print_in_format(state)
+
+    print("\nHeuristic Value(Manhattan Distance) : " + str(h))
+
+########################################################## End of manhatten   ###########################################

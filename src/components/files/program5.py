@@ -1,65 +1,29 @@
-boardcount = 0
-def IsBoardOk (board, row, col) :
+N = int(input("Enter the number of queens: "))
 
- #if queen X takes position to the left of column col on the same row.
- for c in range(col) :
-   if (board[row][c] == 'X') :
-     return False
-
- #if queen X takes position on the upper left diagonal
- for r, c in zip(range(row-1, -1, -1), range(col-1, -1, -1)) :
-   if (board[r][c] == 'X') :
-     return False
-
- #if queen X takes position on the lower left diagonal
- for r, c in zip(range(row+1, len(board), 1), range(col-1, -1, -1)) :
-   if (board[r][c] == 'X') :
-     return False
-
- return True
-
-def DisplayBoard (board) :
-  for row in board :
-    print(row)
-
-def PlaceNQueens (board, col) :
-
-  # If all the columns have a queen 'Q', a solution has been found.
-  global boardcount
-
-  if (col >= len(board)) :
-
-    boardcount += 1
-    print("Chessboard " + str(boardcount))
-    print("--------------------------")
-    DisplayBoard(board)
-    print("--------------------------\n")
-
-  else :
-
-    # Else try placing the queen on each row of the column and check if the chessboard remains OK.
-    for row in range(len(board)) :
-
-      board[row][col] = 'X'
-
-      if (IsBoardOk(board, row, col) == True) :
-        # Chess board was OK, hence try placing the queen 'Q' in the next column.
-        PlaceNQueens(board, col + 1)
-
-      board[row][col] = '.'; # As previously placed queen was not valid, restore '.'
-
-def main() :
-
- board = []
- N = int(input("Enter No. of queens : "))
-
- for i in range(N) :
-   row = ["."] * N
-   board.append(row)
-
- # Start placing the queen 'X' from the 0'th column.
- PlaceNQueens(board, 0)
-
-if __name__ == "__main__" :
-  main()
-
+board = [[0]*N for _ in range(N)]
+def attack(i, j):
+    #checking vertically and horizontally
+    for k in range(0,N):
+        if board[i][k]==1 or board[k][j]==1:
+            return True
+    #checking diagonally
+    for k in range(0,N):
+        for l in range(0,N):
+            if (k+l==i+j) or (k-l==i-j):
+                if board[k][l]==1:
+                    return True
+    return False
+def N_queens(n):
+    if n==0:
+        return True
+    for i in range(0,N):
+        for j in range(0,N):
+            if (not(attack(i,j))) and (board[i][j]!=1):
+                board[i][j] = 1
+                if N_queens(n-1)==True:
+                    return True
+                board[i][j] = 0
+    return False
+N_queens(N)
+for i in board:
+    print (i)
