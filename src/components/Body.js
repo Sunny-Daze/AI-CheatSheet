@@ -33,24 +33,24 @@ function Body(props) {
     <StyleRoot>
       <div className="container-fluid parent-container">
         <div className="row">
-          <div className="col mx-4 my-4" style={styles.fadeInLeft}>
+          <div className="col my-4" style={styles.fadeInLeft}>
             <Panel1 mode={props.mode} />
           </div>
-          <div className="col mx-4 my-4" style={styles.fadeInDown}>
+          <div className="col my-4" style={styles.fadeInDown}>
             <Panel2 mode={props.mode} />
           </div>
-          <div className="col mx-4 my-4" style={styles.fadeInRight}>
+          <div className="col my-4" style={styles.fadeInRight}>
             <Panel3 mode={props.mode} />
           </div>
         </div>
         <div className="row">
-          <div className="col mx-4 my-4" style={styles.fadeInLeft}>
+          <div className="col my-4" style={styles.fadeInLeft}>
             <Panel4 mode={props.mode} />
           </div>
-          <div className="col mx-4 my-4" style={styles.fadeInUp}>
+          <div className="col my-4" style={styles.fadeInUp}>
             <Panel5 mode={props.mode} />
           </div>
-          <div className="col mx-4 my-4" style={styles.fadeInRight}>
+          <div className="col my-4" style={styles.fadeInRight}>
             <Panel6 mode={props.mode} />
           </div>
         </div>
