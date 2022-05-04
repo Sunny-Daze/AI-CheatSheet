@@ -1,4 +1,4 @@
-# 
+# DFS - Depth First Search
 
 graph = {
   # graph diagram would be given
@@ -28,3 +28,39 @@ def dfs(visited, graph, node): #function for dfs
 print("Following is the Depth-First Search")
 dfs(visited, graph, 'A')
 
+# End of Depth First Search
+
+
+
+# BFS - Breadth First Search
+
+graph = {
+ 'S' : ['1','3'],
+ '1' : ['G'],
+ '3' : ['1','G','4'],
+ '2' : ['1'],
+ '4' : ['2','5'],
+ '5' : ['2','G'],
+ 'G' : ['4']
+}
+
+visited = [] # List to keep track of visited nodes.
+queue = []   #Initialize a queue
+
+def bfs(visited, graph, node):
+ visited.append(node)
+ queue.append(node)
+
+ while queue:
+  s = queue.pop(0) 
+  print (s, end = " ") 
+
+  for neighbour in graph[s]:
+   if neighbour not in visited:
+    visited.append(neighbour)
+    queue.append(neighbour)
+
+# Driver Code
+bfs(visited, graph, 'S')
+
+# End of Breadth First Search
