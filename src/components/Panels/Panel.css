@@ -22,3 +22,7 @@
   width: 200px;
   text-align: center;
 }
+
+.hidden-div {
+  display: none;
+}

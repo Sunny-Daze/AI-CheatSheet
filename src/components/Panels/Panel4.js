@@ -7,7 +7,7 @@ function Panel1(props) {
       <div
         className="card text-white mb-3 panel1"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#Modal4"
         style={{
           "max-width": "18rem",
           backgroundColor: `${props.mode === "light" ? "#0d6efd" : "#011627"}`,
@@ -32,9 +32,9 @@ function Panel1(props) {
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id="Modal4"
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="Modal4Label"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -48,7 +48,7 @@ function Panel1(props) {
             }}
           >
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title" id="Modal4Label">
                 BFS and DFS
               </h5>
               <button
@@ -58,7 +58,7 @@ function Panel1(props) {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">python sucks</div>
+            <div className="modal-body">panel 4</div>
             <div className="modal-footer">
               <button
                 type="button"

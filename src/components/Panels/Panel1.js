@@ -1,7 +1,16 @@
 import React from "react";
 import "./Panel.css";
+import code from "../files/sample.py";
 
 function Panel1(props) {
+  const copy = () => {
+    var range = document.createRange();
+    range.selectNode(document.getElementById("hidden-text"));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges(); // to deselect
+  };
   return (
     <>
       <div
@@ -58,34 +67,46 @@ function Panel1(props) {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">python sucks</div>
+            <div className="modal-body" id="panel1">
+              hello
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary bg-danger"
                 data-bs-dismiss="modal"
                 style={{
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
+                  borderColor: `${props.mode === "light" ? "white" : "white"}`,
                 }}
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{
-                  backgroundColor: `${
-                    props.mode === "light" ? "#0d6efd" : "#011627"
-                  }`,
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
-                }}
+              <a href={code} download="bfs||dfs.py">
+                <button
+                  onClick={copy}
+                  type="button"
+                  className="btn btn-primary"
+                  style={{
+                    backgroundColor: `${
+                      props.mode === "light" ? "#0d6efd" : "#011627"
+                    }`,
+                    borderColor: `${
+                      props.mode === "light" ? "#0d6efd" : "white"
+                    }`,
+                  }}
+                >
+                  Copy
+                </button>
+              </a>
+              {/* <a
+                href="https://drive.google.com/uc?id=1fTWkHk1ANooQnFwpeL2hPQi4wuPIzZI1&export=download"
+                download
               >
-                Copy
-              </button>
+                Click to download
+              </a>
+              <a href={code} download="haha.py">
+                Download Here
+              </a> */}
             </div>
           </div>
         </div>
