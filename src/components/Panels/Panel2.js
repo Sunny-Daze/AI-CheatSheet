@@ -1,5 +1,6 @@
 import React from "react";
 import "./Panel.css";
+import program2 from "../files/program2.py";
 
 function Panel2(props) {
   return (
@@ -49,7 +50,7 @@ function Panel2(props) {
           >
             <div className="modal-header">
               <h5 className="modal-title" id="Modal2Label">
-                BFS and DFS
+                8 Puzzle using A* Search Algorithm
               </h5>
               <button
                 type="button"
@@ -58,7 +59,15 @@ function Panel2(props) {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">panel 2</div>
+            <div className="modal-body">
+              <h5>
+                Click on the download button to download the program.
+                <br />
+                <br />
+                <br />
+                Good Luck!
+              </h5>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
@@ -70,20 +79,22 @@ function Panel2(props) {
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{
-                  backgroundColor: `${
-                    props.mode === "light" ? "#0d6efd" : "#011627"
-                  }`,
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
-                }}
-              >
-                Copy
-              </button>
+              <a href={program2} download="8puzzle.py">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{
+                    backgroundColor: `${
+                      props.mode === "light" ? "#0d6efd" : "#011627"
+                    }`,
+                    borderColor: `${
+                      props.mode === "light" ? "#0d6efd" : "white"
+                    }`,
+                  }}
+                >
+                  Download
+                </button>
+              </a>
             </div>
           </div>
         </div>

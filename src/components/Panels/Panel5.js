@@ -1,5 +1,6 @@
 import React from "react";
 import "./Panel.css";
+import program5 from "../files/program5.py";
 
 function Panel5(props) {
   return (
@@ -25,7 +26,7 @@ function Panel5(props) {
           Program 5
         </div>
         <div className="card-body">
-          <h5 className="card-title">8 Queens Prob</h5>
+          <h5 className="card-title">8 Queens Problem</h5>
           <p className="card-text"></p>
         </div>
       </div>
@@ -49,43 +50,51 @@ function Panel5(props) {
           >
             <div className="modal-header">
               <h5 className="modal-title" id="Modal5Label">
-                BFS and DFS
+                8 Queens Problem
               </h5>
               <button
                 type="button"
-                className="btn-close btn-close-white"
+                className="btn-close  btn-close-white"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">panel 5</div>
+            <div className="modal-body">
+              <h5>
+                Click on the download button to download the program.
+                <br />
+                <br />
+                <br />
+                Good Luck!
+              </h5>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary bg-danger"
                 data-bs-dismiss="modal"
                 style={{
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
+                  borderColor: `${props.mode === "light" ? "white" : "white"}`,
                 }}
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{
-                  backgroundColor: `${
-                    props.mode === "light" ? "#0d6efd" : "#011627"
-                  }`,
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
-                }}
-              >
-                Copy
-              </button>
+              <a href={program5} download="8queens.py">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{
+                    backgroundColor: `${
+                      props.mode === "light" ? "#0d6efd" : "#011627"
+                    }`,
+                    borderColor: `${
+                      props.mode === "light" ? "#0d6efd" : "white"
+                    }`,
+                  }}
+                >
+                  Download
+                </button>
+              </a>
             </div>
           </div>
         </div>

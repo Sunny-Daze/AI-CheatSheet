@@ -1,6 +1,6 @@
 import React from "react";
 import "./Panel.css";
-import code from "../files/sample.py";
+import program1 from "../files/program1.py";
 
 function Panel1(props) {
   const copy = () => {
@@ -68,7 +68,13 @@ function Panel1(props) {
               ></button>
             </div>
             <div className="modal-body" id="panel1">
-              hello
+              <h5>
+                Click on the download button to download the program.
+                <br />
+                <br />
+                <br />
+                Good Luck!
+              </h5>
             </div>
             <div className="modal-footer">
               <button
@@ -81,7 +87,7 @@ function Panel1(props) {
               >
                 Close
               </button>
-              <a href={code} download="bfs||dfs.py">
+              <a href={program1} download="bfs||dfs.py">
                 <button
                   onClick={copy}
                   type="button"
@@ -95,18 +101,9 @@ function Panel1(props) {
                     }`,
                   }}
                 >
-                  Copy
+                  Download
                 </button>
               </a>
-              {/* <a
-                href="https://drive.google.com/uc?id=1fTWkHk1ANooQnFwpeL2hPQi4wuPIzZI1&export=download"
-                download
-              >
-                Click to download
-              </a>
-              <a href={code} download="haha.py">
-                Download Here
-              </a> */}
             </div>
           </div>
         </div>

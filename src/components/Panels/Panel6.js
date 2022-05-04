@@ -1,5 +1,6 @@
 import React from "react";
 import "./Panel.css";
+import program6 from "../files/program6.py";
 
 function Panel6(props) {
   return (
@@ -49,43 +50,51 @@ function Panel6(props) {
           >
             <div className="modal-header">
               <h5 className="modal-title" id="Modal6Label">
-                BFS and DFS
+                Forward and Backward Chaining
               </h5>
               <button
                 type="button"
-                className="btn-close btn-close-white"
+                className="btn-close  btn-close-white"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">panel 6</div>
+            <div className="modal-body">
+              <h5>
+                Click on the download button to download the program.
+                <br />
+                <br />
+                <br />
+                Good Luck!
+              </h5>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary bg-danger"
                 data-bs-dismiss="modal"
                 style={{
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
+                  borderColor: `${props.mode === "light" ? "white" : "white"}`,
                 }}
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{
-                  backgroundColor: `${
-                    props.mode === "light" ? "#0d6efd" : "#011627"
-                  }`,
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
-                }}
-              >
-                Copy
-              </button>
+              <a href={program6} download="forward|backwarc|chaining.py">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{
+                    backgroundColor: `${
+                      props.mode === "light" ? "#0d6efd" : "#011627"
+                    }`,
+                    borderColor: `${
+                      props.mode === "light" ? "#0d6efd" : "white"
+                    }`,
+                  }}
+                >
+                  Download
+                </button>
+              </a>
             </div>
           </div>
         </div>

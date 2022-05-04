@@ -1,7 +1,8 @@
 import React from "react";
 import "./Panel.css";
+import program4 from "../files/program4.py";
 
-function Panel1(props) {
+function Panel4(props) {
   return (
     <>
       <div
@@ -49,43 +50,51 @@ function Panel1(props) {
           >
             <div className="modal-header">
               <h5 className="modal-title" id="Modal4Label">
-                BFS and DFS
+                Truth Tables
               </h5>
               <button
                 type="button"
-                className="btn-close btn-close-white"
+                className="btn-close  btn-close-white"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">panel 4</div>
+            <div className="modal-body">
+              <h5>
+                Click on the download button to download the program.
+                <br />
+                <br />
+                <br />
+                Good Luck!
+              </h5>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary bg-danger"
                 data-bs-dismiss="modal"
                 style={{
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
+                  borderColor: `${props.mode === "light" ? "white" : "white"}`,
                 }}
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{
-                  backgroundColor: `${
-                    props.mode === "light" ? "#0d6efd" : "#011627"
-                  }`,
-                  borderColor: `${
-                    props.mode === "light" ? "#0d6efd" : "white"
-                  }`,
-                }}
-              >
-                Copy
-              </button>
+              <a href={program4} download="truth-tables.py">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{
+                    backgroundColor: `${
+                      props.mode === "light" ? "#0d6efd" : "#011627"
+                    }`,
+                    borderColor: `${
+                      props.mode === "light" ? "#0d6efd" : "white"
+                    }`,
+                  }}
+                >
+                  Download
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -94,4 +103,4 @@ function Panel1(props) {
   );
 }
 
-export default Panel1;
+export default Panel4;
