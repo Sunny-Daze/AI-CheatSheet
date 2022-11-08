@@ -36,7 +36,7 @@ function Panel1(props) {
           Program 1
         </div>
         <div className="card-body">
-          <h5 className="card-title">BFS and DFS</h5>
+          <h5 className="card-title">Linear Regression</h5>
           <p className="card-text"></p>
         </div>
       </div>
